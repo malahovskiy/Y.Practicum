@@ -1,5 +1,6 @@
 from random import randint
 
+
 DEFAULT_ATTACK = 5
 DEFAULT_DEFENCE = 10
 DEFAULT_STAMINA = 80
@@ -68,14 +69,14 @@ def choice_char_class(char_name: str) -> Character:
     """
     game_classes = {'warrior': Warrior, 'mage': Mage, 'healer': Healer}
 
-    approve_choice: str = None
+    approve_choice: str = ''
 
     while approve_choice != 'y':
         selected_class = input(
-                            'Введи название персонажа, '
-                            'за которого хочешь играть: Воитель — warrior, '
-                            'Маг — mage, Лекарь — healer: '
-                            )
+            'Введи название персонажа, '
+            'за которого хочешь играть: Воитель — warrior, '
+            'Маг — mage, Лекарь — healer: '
+        )
         char_class: Character = game_classes[selected_class](char_name)
         print(char_class)
         approve_choice = input('Нажми (Y), чтобы подтвердить выбор, '
@@ -90,10 +91,10 @@ def start_training(character: Character) -> str:
     Возвращает сообщения о результатах цикла тренировки персонажа.
     """
     commands = {
-            "attack": character.attack,
-            "defence":  character.defence,
-            "special": character.special,
-            }
+        "attack": character.attack,
+        "defence":  character.defence,
+        "special": character.special,
+    }
 
     # Замените конструкцию условных операторов на словарь.
     print('Потренируйся управлять своими навыками.')
@@ -101,7 +102,7 @@ def start_training(character: Character) -> str:
         'Введи одну из команд: attack — чтобы атаковать противника, '
         'defence — чтобы блокировать атаку противника или '
         'special — чтобы использовать свою суперсилу.'
-        )
+    )
     print('Если не хочешь тренироваться, введи команду skip.')
     cmd = None
     while cmd != 'skip':
@@ -113,6 +114,7 @@ def start_training(character: Character) -> str:
         if cmd in commands:
             print(commands[cmd]())
     return 'Тренировка окончена.'
+
 
 if __name__ == "__main__":
     warrior = Warrior('Кодослав')
